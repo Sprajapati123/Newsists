@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "239153648428",
+    "firebase_url": "https://newsist.firebaseio.com",
+    "project_id": "newsist",
+    "storage_bucket": "newsist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239153648428:android:cbd820975dc09ece801289",
+        "android_client_info": {
+          "package_name": "com.newsist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "239153648428-o9f40i2b2ptdsrrcap499tqcma5467bf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.newsist",
+            "certificate_hash": "2275b4a4aeb30d739ab18f8baad3cf49234045da"
+          }
+        },
+        {
+          "client_id": "239153648428-3bab37gvrn4spli6dit6p5qh4f92lo4g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuZWbqJuJ9tt0reBCp5TIYNAAuSrOUO7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "239153648428-3bab37gvrn4spli6dit6p5qh4f92lo4g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

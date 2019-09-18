@@ -1,31 +1,30 @@
 package com.newsist;
+
 import android.content.Context;
-import android.content.Intent;
-//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.newsist.Utils.BottomNavigationViewHelper;
 
-//import tabian.com.instagramclone.Utils.BottomNavigationViewHelper;
 
-public class HomeActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
+    private static final String TAG = "ProfileActivity";
+    private static final int ACTIVITY_NUM = 4;
 
-    private static final String TAG = "HomeActivity";
-    private static final int ACTIVITY_NUM = 0;
-
-    private Context mContext = HomeActivity.this;
+    private Context mContext = ProfileActivity.this;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Log.d(TAG, "onCreate: starting.");
+        Log.d(TAG, "onCreate: started.");
 
         setupBottomNavigationView();
     }
@@ -43,3 +42,4 @@ public class HomeActivity extends AppCompatActivity {
         menuItem.setChecked(true);
     }
 }
+

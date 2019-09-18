@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -18,9 +17,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.newsist.Utils.BottomNavigationViewHelper;
+import com.newsist.Home.HomeActivity;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private EditText login_email, login_password;
     private Button btn_login;
     private TextView link_signup;
@@ -45,7 +44,7 @@ public class Login extends AppCompatActivity {
         link_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login.this, Register.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
                 return;
             }
@@ -70,7 +69,7 @@ public class Login extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 //authenticate user
                 firebaseAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 // If sign in fails, display a message to the user. If sign in succeeds
@@ -78,16 +77,16 @@ public class Login extends AppCompatActivity {
                                 // signed in user can be handled in the listener.
 //                                progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "LoginActivity successful!", Toast.LENGTH_LONG).show();
                                     progressBar.setVisibility(View.GONE);
 
-                                    Intent intent = new Intent(Login.this, HomeActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                     startActivity(intent);
                                     finish();
 
                                 }
                                 else {
-                                    Toast.makeText(getApplicationContext(), "Login failed! Please try again", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "LoginActivity failed! Please try again", Toast.LENGTH_LONG).show();
                                     progressBar.setVisibility(View.GONE);
                                 }
                             }

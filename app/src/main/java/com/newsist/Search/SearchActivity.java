@@ -1,4 +1,4 @@
-package com.newsist;
+package com.newsist.Search;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,19 +11,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.newsist.R;
 import com.newsist.Utils.BottomNavigationViewHelper;
 
 
-public class AddActivity extends AppCompatActivity {
-    private static final String TAG = "ShareActivity";
-    private static final int ACTIVITY_NUM = 2;
+public class SearchActivity extends AppCompatActivity {
+    private static final String TAG = "SearchActivity";
+    private static final int ACTIVITY_NUM = 1;
 
-    private Context mContext = AddActivity.this;
+    private Context mContext = SearchActivity.this;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_add);
         Log.d(TAG, "onCreate: started.");
 
         setupBottomNavigationView();

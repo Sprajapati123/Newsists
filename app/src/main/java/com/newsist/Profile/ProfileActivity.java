@@ -1,4 +1,4 @@
-package com.newsist;
+package com.newsist.Profile;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,31 +9,44 @@ import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.newsist.R;
 import com.newsist.Utils.BottomNavigationViewHelper;
 
 
+public class ProfileActivity extends AppCompatActivity {
+    private static final String TAG = "ProfileActivity";
+    private static final int ACTIVITY_NUM = 4;
 
-/**
- * Created by User on 5/28/2017.
- */
-
-public class NotificationActivity extends AppCompatActivity {
-    private static final String TAG = "LikesActivity";
-    private static final int ACTIVITY_NUM = 3;
-
-    private Context mContext = NotificationActivity.this;
+    private Context mContext = ProfileActivity.this;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_profile);
         Log.d(TAG, "onCreate: started.");
 
         setupBottomNavigationView();
+        setupToolbar();
     }
 
+    private void setupToolbar(){
+        Toolbar toolbar=(Toolbar) findViewById(R.id.profileToolBar);
+        setSupportActionBar(toolbar);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+               Log.d(TAG,"onMenuItemClick: clicked menu item: " + item);
+               switch (item.getItemId()){
+                   case R.id.profileMenu:
+                   Log.d(TAG,"onMenuItemClick: Navigating to profile Preferences. ");
+               }
+                return false;
+            }
+        });
+    }
     /**
      * BottomNavigationView setup
      */
@@ -46,4 +59,11 @@ public class NotificationActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.profile_menu,menu);
+        return true;
+    }
 }
+

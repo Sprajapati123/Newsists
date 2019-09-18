@@ -16,13 +16,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.newsist.Home.HomeActivity;
 
 import java.util.regex.Pattern;
 
 
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
@@ -66,7 +65,7 @@ public class Register extends AppCompatActivity {
                 }
 
                 if ((!PASSWORD_PATTERN.matcher(password).matches())) {
-                    Toast.makeText(Register.this, "password must contain A-Z,a-z,0-9,@#$%+=]", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "password must contain A-Z,a-z,0-9,@#$%+=]", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -77,18 +76,18 @@ public class Register extends AppCompatActivity {
 
                 ProgressBar.setVisibility(View.VISIBLE);
                 //create user
-                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
+                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Toast.makeText(Register.this, "Registered Successfully:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Registered Successfully:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
                         ProgressBar.setVisibility(View.GONE);
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            Toast.makeText(Register.this, "Registration Failed:" + task.getException(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Registration Failed:" + task.getException(), Toast.LENGTH_SHORT).show();
                         } else {
-                            startActivity(new Intent(Register.this, HomeActivity.class));
+                            startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
                             finish();
                         }
                     }

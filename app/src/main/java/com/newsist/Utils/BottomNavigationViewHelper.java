@@ -9,12 +9,12 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
-import com.newsist.AddActivity;
-import com.newsist.HomeActivity;
-import com.newsist.NotificationActivity;
-import com.newsist.ProfileActivity;
+import com.newsist.Share.AddActivity;
+import com.newsist.Home.HomeActivity;
+import com.newsist.Notification.NotificationActivity;
+import com.newsist.Profile.ProfileActivity;
 import com.newsist.R;
-import com.newsist.SearchActivity;
+import com.newsist.Search.SearchActivity;
 
 public class BottomNavigationViewHelper {
 

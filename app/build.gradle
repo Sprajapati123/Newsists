@@ -38,6 +38,8 @@ dependencies {
 
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
 
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
 

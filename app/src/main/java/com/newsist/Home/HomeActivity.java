@@ -13,6 +13,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.newsist.R;
 import com.newsist.Utils.BottomNavigationViewHelper;
+import com.newsist.Utils.SectionPagerAdapter;
 
 //import tabian.com.instagramclone.Utils.BottomNavigationViewHelper;
 

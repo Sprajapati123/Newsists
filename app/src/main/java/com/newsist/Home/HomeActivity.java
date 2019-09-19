@@ -1,6 +1,6 @@
 package com.newsist.Home;
+
 import android.content.Context;
-//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,8 +14,10 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.newsist.R;
 import com.newsist.Utils.BottomNavigationViewHelper;
 import com.newsist.Utils.SectionPagerAdapter;
+import com.newsist.Utils.UniversalImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
-//import tabian.com.instagramclone.Utils.BottomNavigationViewHelper;
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -30,28 +32,36 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Log.d(TAG, "onCreate: starting.");
 
+        initImageLoader();
         setupBottomNavigationView();
         setupViewPager();
+
+    }
+
+    private void initImageLoader(){
+        UniversalImageLoader universalImageLoader = new UniversalImageLoader(mContext);
+        ImageLoader.getInstance().init(universalImageLoader.getConfig());
     }
 
     /**
-     * Responsible for adding the  tabs : camera, Home, messages
+     * Responsible for adding the 3 tabs: Camera, Home, Messages
      */
     private void setupViewPager(){
         SectionPagerAdapter adapter = new SectionPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new CameraFragment()); //index 0
-        adapter.addFragment(new HomeFragment());  //index 1
+        adapter.addFragment(new HomeFragment()); //index 1
         adapter.addFragment(new MessageFragment()); //index 2
         ViewPager viewPager = (ViewPager) findViewById(R.id.container);
         viewPager.setAdapter(adapter);
 
-        TabLayout tabLayout=(TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_camera);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_logo);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_arrow);
-
     }
+
     /**
      * BottomNavigationView setup
      */

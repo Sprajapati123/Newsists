@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "239153648428-787ai1qhb6q7lbtthv00s3lsm58al7p3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.newsist",
+            "certificate_hash": "1cd0615efb312ec122c65910824d5604667d0114"
+          }
+        },
+        {
           "client_id": "239153648428-o9f40i2b2ptdsrrcap499tqcma5467bf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

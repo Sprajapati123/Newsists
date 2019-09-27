@@ -64,7 +64,7 @@ public class Registration extends AppCompatActivity {
 
                 if(checkInputs(email, username, password)){
                     mProgressBar.setVisibility(View.VISIBLE);
-                    loadingPleaseWait.setVisibility(View.VISIBLE);
+
 
                     firebaseMethods.registerNewEmail(email, password, username);
                 }
@@ -93,7 +93,7 @@ public class Registration extends AppCompatActivity {
         mPassword = (EditText) findViewById(R.id.reg_password);
         mContext = Registration.this;
         mProgressBar.setVisibility(View.GONE);
-        loadingPleaseWait.setVisibility(View.GONE);
+
 
     }
 

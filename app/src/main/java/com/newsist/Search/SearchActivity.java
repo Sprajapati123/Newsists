@@ -9,10 +9,16 @@ import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.tabs.TabLayout;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.newsist.Home.CameraFragment;
+import com.newsist.Home.HomeFragment;
+import com.newsist.Home.MessageFragment;
 import com.newsist.R;
 import com.newsist.Utils.BottomNavigationViewHelper;
+import com.newsist.Utils.SectionPagerAdapter;
 
 
 public class SearchActivity extends AppCompatActivity {
@@ -28,7 +34,25 @@ public class SearchActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: started.");
 
         setupBottomNavigationView();
+//        setupBottomNavigationView();
+//        setupViewPager();
     }
+
+//    private void setupViewPager(){
+//        SectionPagerAdapter adapter = new SectionPagerAdapter(getSupportFragmentManager());
+//        adapter.addFragment(new CameraFragment()); //index 0
+//        adapter.addFragment(new HomeFragment()); //index 1
+//        adapter.addFragment(new MessageFragment()); //index 2
+//        ViewPager viewPager = (ViewPager) findViewById(R.id.container);
+//        viewPager.setAdapter(adapter);
+//
+//        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+//        tabLayout.setupWithViewPager(viewPager);
+//
+//        tabLayout.getTabAt(0).setIcon(R.drawable.ic_camera);
+//        tabLayout.getTabAt(1).setIcon(R.drawable.ic_logo);
+//        tabLayout.getTabAt(2).setIcon(R.drawable.ic_arrow);
+//    }
 
     /**
      * BottomNavigationView setup

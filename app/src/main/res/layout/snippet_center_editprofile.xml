@@ -141,7 +141,10 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="40dp"
                     android:background="@null"
-                    android:inputType="textNoSuggestions"
+                    android:lines="8"
+                    android:maxLines="10"
+                    android:minLines="6"
+                    android:inputType="text|textMultiLine"
                     android:hint="Description"/>
 
             </RelativeLayout>

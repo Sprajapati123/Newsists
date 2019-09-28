@@ -35,6 +35,7 @@
         <activity android:name=".Login.Registration">
 
         </activity>
+        <activity android:name=".Share.ShareActivity" />
 
     </application>
 

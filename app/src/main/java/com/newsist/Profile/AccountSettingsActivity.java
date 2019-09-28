@@ -18,21 +18,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.newsist.R;
 import com.newsist.Utils.BottomNavigationViewHelper;
+import com.newsist.Utils.FirebaseMethods;
 import com.newsist.Utils.SectionsStatePagerAdapter;
 
 import java.util.ArrayList;
-
-
 
 public class AccountSettingsActivity extends AppCompatActivity {
 
@@ -74,6 +66,18 @@ public class AccountSettingsActivity extends AppCompatActivity {
 
     private void getIncomingIntent(){
         Intent intent = getIntent();
+
+        //if there is an imageUrl attached as an extra, then it was chosen from the gallery/photo fragment
+        if(intent.hasExtra(getString(R.string.selected_image))){
+            Log.d(TAG, "getIncomingIntent: New incoming imgUrl");
+            if(intent.getStringExtra(getString(R.string.return_to_fragment)).equals(getString(R.string.edit_profile_fragment))){
+
+                //set the new profile picture
+                FirebaseMethods firebaseMethods = new FirebaseMethods(AccountSettingsActivity.this);
+                firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo), null, 0,
+                        intent.getStringExtra(getString(R.string.selected_image)));
+            }
+        }
 
         if(intent.hasExtra(getString(R.string.calling_activity))){
             Log.d(TAG, "getIncomingIntent: received incoming intent from " + getString(R.string.profile_activity));
@@ -131,3 +135,5 @@ public class AccountSettingsActivity extends AppCompatActivity {
 
 
 }
+
+

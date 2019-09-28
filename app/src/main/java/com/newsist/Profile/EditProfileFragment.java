@@ -1,6 +1,7 @@
 package com.newsist.Profile;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.newsist.R;
+import com.newsist.Share.AddActivity;
 import com.newsist.Utils.FirebaseMethods;
 import com.newsist.Utils.UniversalImageLoader;
 import com.newsist.dialogs.ConfirmPasswordDialog;
@@ -68,7 +70,8 @@ public class EditProfileFragment extends Fragment implements
                                 public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
                                     if(task.isSuccessful()){
                                         try{
-                                            if(task.getResult().getSignInMethods().size() == 1){
+                                            if(task.getResult().getSignInMethods()
+                                                    .size() == 1){
                                                 Log.d(TAG, "onComplete: that email is already in use.");
                                                 Toast.makeText(getActivity(), "That email is already in use", Toast.LENGTH_SHORT).show();
                                             }
@@ -279,7 +282,15 @@ public class EditProfileFragment extends Fragment implements
         mEmail.setText(userSettings.getUser().getEmail());
         mPhoneNumber.setText(String.valueOf(userSettings.getUser().getPhone_number()));
 
-
+        mChangeProfilePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: changing profile photo");
+                Intent intent = new Intent(getActivity(), AddActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //268435456
+                getActivity().startActivity(intent);
+            }
+        });
     }
        /*
     ------------------------------------ Firebase ---------------------------------------------

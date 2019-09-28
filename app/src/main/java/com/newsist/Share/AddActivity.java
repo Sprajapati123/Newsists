@@ -3,7 +3,7 @@ package com.newsist.Share;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.os.Bundle;;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +19,6 @@ import com.newsist.R;
 import com.newsist.Utils.BottomNavigationViewHelper;
 import com.newsist.Utils.Permissions;
 import com.newsist.Utils.SectionPagerAdapter;
-
 
 public class AddActivity extends AppCompatActivity {
     private static final String TAG = "ShareActivity";
@@ -74,6 +73,11 @@ public class AddActivity extends AppCompatActivity {
         tabLayout.getTabAt(0).setText(getString(R.string.gallery));
         tabLayout.getTabAt(1).setText(getString(R.string.photo));
 
+    }
+
+    public int getTask(){
+        Log.d(TAG, "getTask: TASK: " + getIntent().getFlags());
+        return getIntent().getFlags();
     }
 
     /**

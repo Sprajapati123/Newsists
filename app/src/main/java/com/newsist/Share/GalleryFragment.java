@@ -4,6 +4,7 @@ package com.newsist.Share;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +16,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.newsist.Profile.AccountSettingsActivity;
 import com.newsist.R;
 import com.newsist.Utils.FilePaths;
 import com.newsist.Utils.FileSearch;
@@ -29,7 +30,6 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.util.ArrayList;
-
 
 public class GalleryFragment extends Fragment {
     private static final String TAG = "GalleryFragment";
@@ -79,16 +79,32 @@ public class GalleryFragment extends Fragment {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: navigating to the final share screen.");
 
+                if(isRootTask()){
+                    Intent intent = new Intent(getActivity(), NextActivity.class);
+                    intent.putExtra(getString(R.string.selected_image), mSelectedImage);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(getActivity(), AccountSettingsActivity.class);
+                    intent.putExtra(getString(R.string.selected_image), mSelectedImage);
+                    intent.putExtra(getString(R.string.return_to_fragment), getString(R.string.edit_profile_fragment));
+                    startActivity(intent);
+                }
 
-                Intent intent = new Intent(getActivity(), NextActivity.class);
-                intent.putExtra(getString(R.string.selected_image), mSelectedImage);
-                startActivity(intent);
             }
         });
 
         init();
 
         return view;
+    }
+
+    private boolean isRootTask(){
+        if(((AddActivity)getActivity()).getTask() == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     private void init(){

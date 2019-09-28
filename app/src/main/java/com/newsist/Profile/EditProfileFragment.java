@@ -70,8 +70,7 @@ public class EditProfileFragment extends Fragment implements
                                 public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
                                     if(task.isSuccessful()){
                                         try{
-                                            if(task.getResult().getSignInMethods()
-                                                    .size() == 1){
+                                            if(task.getResult().getSignInMethods().size() == 1){
                                                 Log.d(TAG, "onComplete: that email is already in use.");
                                                 Toast.makeText(getActivity(), "That email is already in use", Toast.LENGTH_SHORT).show();
                                             }
@@ -289,6 +288,7 @@ public class EditProfileFragment extends Fragment implements
                 Intent intent = new Intent(getActivity(), AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //268435456
                 getActivity().startActivity(intent);
+                getActivity().finish();
             }
         });
     }

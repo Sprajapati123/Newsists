@@ -25,6 +25,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.newsist.Home.HomeActivity;
+import com.newsist.Profile.AccountSettingsActivity;
 import com.newsist.R;
 import com.newsist.models.Photo;
 import com.newsist.models.User;
@@ -34,6 +35,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+
+
 
 public class FirebaseMethods {
 
@@ -76,7 +79,7 @@ public class FirebaseMethods {
                     .child(filePaths.FIREBASE_IMAGE_STORAGE + "/" + user_id + "/photo" + (count + 1));
 
             //convert image url to bitmap
-            Bitmap bm = ImageManager.getBitmap(imgUrl);
+            Bitmap  bm = ImageManager.getBitmap(imgUrl);
             byte[] bytes = ImageManager.getBytesFromBitmap(bm, 100);
 
             UploadTask uploadTask = null;
@@ -85,7 +88,7 @@ public class FirebaseMethods {
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Uri firebaseUrl = taskSnapshot.getUploadSessionUri();
+                    Uri firebaseUrl = taskSnapshot.getDownloadUrl();
 
                     Toast.makeText(mContext, "photo upload success", Toast.LENGTH_SHORT).show();
 
@@ -121,6 +124,11 @@ public class FirebaseMethods {
         else if(photoType.equals(mContext.getString(R.string.profile_photo))){
             Log.d(TAG, "uploadNewPhoto: uploading new PROFILE photo");
 
+            ((AccountSettingsActivity)mContext).setViewPager(
+                    ((AccountSettingsActivity)mContext).pagerAdapter
+                            .getFragmentNumber(mContext.getString(R.string.edit_profile_fragment))
+            );
+
             String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
             StorageReference storageReference = mStorageReference
                     .child(filePaths.FIREBASE_IMAGE_STORAGE + "/" + user_id + "/profile_photo");
@@ -135,7 +143,7 @@ public class FirebaseMethods {
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Uri firebaseUrl = taskSnapshot.getUploadSessionUri();
+                    Uri firebaseUrl = taskSnapshot.getDownloadUrl();
 
                     Toast.makeText(mContext, "photo upload success", Toast.LENGTH_SHORT).show();
 
@@ -496,4 +504,3 @@ public class FirebaseMethods {
     }
 
 }
-

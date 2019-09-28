@@ -1,8 +1,9 @@
 package com.newsist.Share;
+
+
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.os.health.PackageHealthStats;
+import android.os.Bundle;;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ import com.newsist.R;
 import com.newsist.Utils.BottomNavigationViewHelper;
 import com.newsist.Utils.Permissions;
 import com.newsist.Utils.SectionPagerAdapter;
+
 
 public class AddActivity extends AppCompatActivity {
     private static final String TAG = "ShareActivity";
@@ -45,7 +47,19 @@ public class AddActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * return the current tab number
+     * 0 = GalleryFragment
+     * 1 = PhotoFragment
+     * @return
+     */
+    public int getCurrentTabNumber(){
+        return mViewPager.getCurrentItem();
+    }
 
+    /**
+     * setup viewpager for manager the tabs
+     */
     private void setupViewPager(){
         SectionPagerAdapter adapter =  new SectionPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new GalleryFragment());

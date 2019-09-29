@@ -2,6 +2,7 @@ package com.newsist.Profile;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -30,6 +31,8 @@ public class AccountSettingsActivity extends AppCompatActivity {
 
     private static final String TAG = "AccountSettingsActivity";
     private static final int ACTIVITY_NUM = 4;
+
+
 
 
     private Context mContext;
@@ -63,41 +66,54 @@ public class AccountSettingsActivity extends AppCompatActivity {
     }
 
 
-    private void getIncomingIntent() {
+
+    private void getIncomingIntent(){
         Intent intent = getIntent();
 
-        //if there is an imageUrl attached as an extra, then it was chosen from the gallery/photo fragment
-        if (intent.hasExtra(getString(R.string.selected_image))) {
-            Log.d(TAG, "getIncomingIntent: New incoming imgUrl");
-            if (intent.getStringExtra(getString(R.string.return_to_fragment)).equals(getString(R.string.edit_profile_fragment))) {
+        if(intent.hasExtra(getString(R.string.selected_image))
+                || intent.hasExtra(getString(R.string.selected_bitmap))){
 
-                //set the new profile picture
-                FirebaseMethods firebaseMethods = new FirebaseMethods(AccountSettingsActivity.this);
-                firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo), null, 0,
-                        intent.getStringExtra(getString(R.string.selected_image)));
+            //if there is an imageUrl attached as an extra, then it was chosen from the gallery/photo fragment
+            Log.d(TAG, "getIncomingIntent: New incoming imgUrl");
+            if(intent.getStringExtra(getString(R.string.return_to_fragment)).equals(getString(R.string.edit_profile_fragment))){
+
+                if(intent.hasExtra(getString(R.string.selected_image))){
+                    //set the new profile picture
+                    FirebaseMethods firebaseMethods = new FirebaseMethods(AccountSettingsActivity.this);
+                    firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo), null, 0,
+                            intent.getStringExtra(getString(R.string.selected_image)), null);
+                }
+                else if(intent.hasExtra(getString(R.string.selected_bitmap))){
+                    //set the new profile picture
+                    FirebaseMethods firebaseMethods = new FirebaseMethods(AccountSettingsActivity.this);
+                    firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo), null, 0,
+                            null,(Bitmap) intent.getParcelableExtra(getString(R.string.selected_bitmap)));
+                }
+
             }
+
         }
 
-        if (intent.hasExtra(getString(R.string.calling_activity))) {
+        if(intent.hasExtra(getString(R.string.calling_activity))){
             Log.d(TAG, "getIncomingIntent: received incoming intent from " + getString(R.string.profile_activity));
             setViewPager(pagerAdapter.getFragmentNumber(getString(R.string.edit_profile_fragment)));
         }
     }
 
-    private void setupFragments() {
+    private void setupFragments(){
         pagerAdapter = new SectionsStatePagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(new EditProfileFragment(), getString(R.string.edit_profile_fragment)); //fragment 0
         pagerAdapter.addFragment(new SignOutFragment(), getString(R.string.sign_out_fragment)); //fragment 1
     }
 
-    public void setViewPager(int fragmentNumber) {
+    public void setViewPager(int fragmentNumber){
         mRelativeLayout.setVisibility(View.GONE);
         Log.d(TAG, "setViewPager: navigating to fragment #: " + fragmentNumber);
         mViewPager.setAdapter(pagerAdapter);
         mViewPager.setCurrentItem(fragmentNumber);
     }
 
-    private void setupSettingsList() {
+    private void setupSettingsList(){
         Log.d(TAG, "setupSettingsList: initializing 'Account Settings' list.");
         ListView listView = (ListView) findViewById(R.id.lvAccountSettings);
 
@@ -122,7 +138,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
     /**
      * BottomNavigationView setup
      */
-    private void setupBottomNavigationView() {
+    private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
         BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
@@ -134,3 +150,4 @@ public class AccountSettingsActivity extends AppCompatActivity {
 
 
 }
+

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relLayout1"
-            android:background="@drawable/white_grey_border_bottom">
+            android:background="@color/white">
 
             <LinearLayout
                 android:id="@+id/linLayout"
@@ -63,13 +63,14 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linLayout"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="20dp"
+                android:background="@drawable/white_grey_border_bottom">
 
                 <TextView
                     android:id="@+id/display_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mitch"
+                    android:text="loading.."
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
@@ -79,7 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="I live in Vancouver, BC"
+                    android:text="loading.."
                     android:textColor="@color/black"
                     android:textSize="16sp"/>
 
@@ -88,7 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="https://codingwithmitch.com"
+                    android:text="loading.."
                     android:textColor="@color/link_blue"
                     android:textSize="16sp"
                     />
@@ -101,7 +102,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linLayout2"
-                android:layout_marginBottom="50dp">
+                android:layout_marginBottom="50dp"
+                >
 
                 <GridView
                     android:id="@+id/gridView"
@@ -126,8 +128,6 @@
     </RelativeLayout>
 
 </merge>
-
-
 
 
 

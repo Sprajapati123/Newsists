@@ -22,7 +22,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.auth.ProviderQueryResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -65,12 +65,12 @@ public class EditProfileFragment extends Fragment implements
                             Log.d(TAG, "User re-authenticated.");
 
                             ///////////////////////check to see if the email is not already present in the database
-                            mAuth.fetchSignInMethodsForEmail(mEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                            mAuth.fetchProvidersForEmail(mEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<ProviderQueryResult>() {
                                 @Override
-                                public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                                public void onComplete(@NonNull Task<ProviderQueryResult> task) {
                                     if(task.isSuccessful()){
                                         try{
-                                            if(task.getResult().getSignInMethods().size() == 1){
+                                            if(task.getResult().getProviders().size() == 1){
                                                 Log.d(TAG, "onComplete: that email is already in use.");
                                                 Toast.makeText(getActivity(), "That email is already in use", Toast.LENGTH_SHORT).show();
                                             }

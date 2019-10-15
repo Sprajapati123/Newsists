@@ -32,9 +32,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
 
-    implementation 'com.google.firebase:firebase-auth:10.2.6'
-    implementation 'com.google.firebase:firebase-database:10.2.6'
-    implementation 'com.google.firebase:firebase-storage:10.2.6'
+//    implementation 'com.google.firebase:firebase-auth:10.2.6'
+//    implementation 'com.google.firebase:firebase-database:10.2.6'
+//    implementation 'com.google.firebase:firebase-storage:10.2.6'
 
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
 
@@ -44,6 +44,20 @@ dependencies {
 
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
+    implementation 'com.github.eschao:android-ElasticListView:v1.0'
+    //material dialogs
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.4.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.4.0'
+
+
+    //firebase authentication
+    implementation 'com.google.firebase:firebase-auth:10.2.6'
+    //firebase database
+    implementation 'com.google.firebase:firebase-database:10.2.6'
+    //firebase storage
+    implementation 'com.google.firebase:firebase-storage:10.2.6'
 
 }
 

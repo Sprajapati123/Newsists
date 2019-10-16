@@ -24,7 +24,7 @@
     </RelativeLayout>
 
     <ProgressBar
-        android:layout_width="150dp"
+        android:layout_width="50dp"
         android:layout_height="150dp"
         android:id="@+id/profileProgressBar"
         android:layout_centerHorizontal="true"

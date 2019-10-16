@@ -36,7 +36,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-
 public class FirebaseMethods {
 
     private static final String TAG = "FirebaseMethods";
@@ -86,14 +85,11 @@ public class FirebaseMethods {
             byte[] bytes = ImageManager.getBytesFromBitmap(bm, 100);
 
             UploadTask uploadTask = null;
-            StorageReference mStorageReference;
             uploadTask = storageReference.putBytes(bytes);
 
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-
                     Uri firebaseUrl = taskSnapshot.getDownloadUrl();
 
                     Toast.makeText(mContext, "photo upload success", Toast.LENGTH_SHORT).show();
@@ -399,7 +395,8 @@ public class FirebaseMethods {
                 0,
                 profile_photo,
                 StringManipulation.condenseUsername(username),
-                website
+                website,
+                userID
         );
 
         myRef.child(mContext.getString(R.string.dbname_user_account_settings))
@@ -512,5 +509,3 @@ public class FirebaseMethods {
     }
 
 }
-
-

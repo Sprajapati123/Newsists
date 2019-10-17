@@ -32,9 +32,6 @@ public class AccountSettingsActivity extends AppCompatActivity {
     private static final String TAG = "AccountSettingsActivity";
     private static final int ACTIVITY_NUM = 4;
 
-
-
-
     private Context mContext;
     public SectionsStatePagerAdapter pagerAdapter;
     private ViewPager mViewPager;
@@ -46,7 +43,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_accountsettings);
         mContext = AccountSettingsActivity.this;
         Log.d(TAG, "onCreate: started.");
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = (ViewPager) findViewById(R.id.viewpager_container);
         mRelativeLayout = (RelativeLayout) findViewById(R.id.relLayout1);
 
         setupSettingsList();
@@ -135,6 +132,9 @@ public class AccountSettingsActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * BottomNavigationView setup
+     */
     private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
         BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
@@ -145,5 +145,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
         menuItem.setChecked(true);
     }
 
+
 }
+
 

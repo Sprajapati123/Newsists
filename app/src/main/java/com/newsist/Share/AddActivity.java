@@ -20,7 +20,7 @@ import com.newsist.Utils.BottomNavigationViewHelper;
 import com.newsist.Utils.Permissions;
 import com.newsist.Utils.SectionPagerAdapter;
 
-public class AddActivity extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity{
     private static final String TAG = "ShareActivity";
 
     //constants
@@ -64,7 +64,7 @@ public class AddActivity extends AppCompatActivity {
         adapter.addFragment(new GalleryFragment());
         adapter.addFragment(new PhotoFragment());
 
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = (ViewPager) findViewById(R.id.viewpager_container);
         mViewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabsBottom);
@@ -138,7 +138,7 @@ public class AddActivity extends AppCompatActivity {
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
         BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enabledNavigation(mContext,this, bottomNavigationViewEx);
+        BottomNavigationViewHelper.enabledNavigation(mContext, this,bottomNavigationViewEx);
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);

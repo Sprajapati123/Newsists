@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.newsist.Home.HomeActivity;
 import com.newsist.R;
 import com.newsist.models.Comment;
 import com.newsist.models.Photo;
@@ -115,7 +116,13 @@ public class ViewCommentsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: navigating back");
-                getActivity().getSupportFragmentManager().popBackStack();
+                if(getCallingActivityFromBundle().equals(getString(R.string.home_activity))){
+                    getActivity().getSupportFragmentManager().popBackStack();
+                    ((HomeActivity)getActivity()).showLayout();
+                }else{
+                    getActivity().getSupportFragmentManager().popBackStack();
+                }
+
             }
         });
     }
@@ -160,6 +167,21 @@ public class ViewCommentsFragment extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.CANADA);
         sdf.setTimeZone(TimeZone.getTimeZone("Canada/Pacific"));
         return sdf.format(new Date());
+    }
+
+    /**
+     * retrieve the photo from the incoming bundle from profileActivity interface
+     * @return
+     */
+    private String getCallingActivityFromBundle(){
+        Log.d(TAG, "getPhotoFromBundle: arguments: " + getArguments());
+
+        Bundle bundle = this.getArguments();
+        if(bundle != null) {
+            return bundle.getString(getString(R.string.home_activity));
+        }else{
+            return null;
+        }
     }
 
     /**

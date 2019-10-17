@@ -1,6 +1,7 @@
 package com.newsist.Search;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.text.Editable;
@@ -29,6 +30,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.newsist.Home.CameraFragment;
 import com.newsist.Home.HomeFragment;
 import com.newsist.Home.MessageFragment;
+import com.newsist.Profile.ProfileActivity;
 import com.newsist.R;
 import com.newsist.Utils.BottomNavigationViewHelper;
 import com.newsist.Utils.SectionPagerAdapter;
@@ -38,7 +40,6 @@ import com.newsist.models.User;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 
 public class SearchActivity extends AppCompatActivity{
     private static final String TAG = "SearchActivity";
@@ -135,7 +136,10 @@ public class SearchActivity extends AppCompatActivity{
                 Log.d(TAG, "onItemClick: selected user: " + mUserList.get(position).toString());
 
                 //navigate to profile activity
-
+                Intent intent =  new Intent(SearchActivity.this, ProfileActivity.class);
+                intent.putExtra(getString(R.string.calling_activity), getString(R.string.search_activity));
+                intent.putExtra(getString(R.string.intent_user), mUserList.get(position));
+                startActivity(intent);
             }
         });
     }
